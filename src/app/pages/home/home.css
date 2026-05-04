@@ -1,0 +1,26 @@
+.producto-card {
+    transition: all 0.3s ease;
+    border: none !important; /* Eliminamos bordes */
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--card-bg);
+}
+
+.producto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-container {
+    transition: background-color 0.3s ease;
+}
+
+.producto-card:hover .card-img-container {
+    background-color: #e9ecef !important;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
