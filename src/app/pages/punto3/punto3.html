@@ -1,0 +1,52 @@
+  <div class="container mt-5 text-center">
+  <h2>Juego de Memoria</h2>
+
+  <!-- Panel de Control -->
+  <div class="mb-4">
+    <!-- Botones de Inicio y Reinicio -->
+    <button class="btn btn-primary me-2" (click)="iniciarJuego()" *ngIf="!juegoIniciado">INICIAR</button><!-- Botón para iniciar el juego. Solo se muestra si la variable 'juegoIniciado' es false -->
+    <button class="btn btn-danger me-2" (click)="reiniciarJuego()" *ngIf="juegoIniciado">REINICIAR</button><!-- Botón para iniciar el juego. Solo se muestra si la variable 'juegoIniciado' es true -->
+
+    <!-- Botón INTENTAR -->
+    <!-- Oculta este botón si el juego no está iniciado usando *ngIf y con [disabled] se deshabilita el botón si puedeVoltear (es una variable booleana) es true -->
+    <button class="btn btn-success me-2" (click)="habilitarIntento()" *ngIf="juegoIniciado" [disabled]="puedeVoltear">INTENTAR</button>
+
+    <!-- Información -->
+    <span class="fs-5 ms-3">Intentos restantes: {{ intentosRestantes }}</span>
+  </div>
+
+  <!-- Tablero del Juego (solo se muestra si el juego inició) -->
+  <div class="row justify-content-center" *ngIf="juegoIniciado">
+    
+    <!-- Iteramos sobre las cartas. -->
+    @for (carta of cartas; track carta.id) { 
+      <!-- @for (carta of cartas; ...): Itera sobre cada elemento del array cartas. En cada iteración, la variable carta representa el elemento actual;
+      track carta.id: Es obligatorio en @for. Le dice a Angular cómo identificar de forma única cada elemento del array utilizando su propiedad id -->
+      <div class="col-4 col-md-3 mb-3">
+        
+        <!-- La carta: le aplicamos clases dinámicas y el evento click -->
+        <div class="carta shadow-sm" 
+             [class.carta-descubierta]="carta.descubierta"
+             [class.carta-tapada]="!carta.descubierta" 
+             (click)="seleccionarCarta(carta)">
+             <!-- [class.carta-descubierta]="carta.descubierta": Aplica la clase CSS carta-descubierta si la propiedad descubierta de la carta actual es true -->
+             <!-- [class.carta-tapada]="!carta.descubierta": Aplica la clase CSS carta-tapada si la propiedad descubierta de la carta actual es false -->
+             <!-- @click="seleccionarCarta(carta)": Cuando el usuario hace clic en esta carta, se ejecuta el método seleccionarCarta pasándole como argumento la carta actual -->
+          
+          <!-- Si está descubierta, mostramos su valor -->
+          @if (carta.descubierta) {
+            <span class="valor-carta">{{ carta.valor }}</span>
+          } @else {
+            <!-- Si está tapada, mostramos la imagen neutral -->
+            <span class="neutral">?</span>
+          }
+          
+        </div>
+      </div>
+    }
+  </div>
+  <!-- POR HACER -->
+  <!-- Mostrar un mensaje cuando el jugador GANE -->
+  <!-- Mostrar un mensaje cuando el jugador PIERDA -->
+
+</div>
