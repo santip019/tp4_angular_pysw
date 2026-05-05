@@ -1,6 +1,7 @@
 .producto-card {
     transition: all 0.3s ease;
-    border: none !important; /* Eliminamos bordes */
+    border: none !important;
+    /* Eliminamos bordes */
     border-radius: 16px;
     overflow: hidden;
     background-color: var(--card-bg);
@@ -23,4 +24,3 @@
     font-weight: 700;
     font-size: 1.1rem;
 }
-

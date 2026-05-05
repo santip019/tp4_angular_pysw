@@ -3,6 +3,7 @@ import { RouterLink } from "@angular/router";
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Inject } from '@angular/core';
 import { FiltroService } from '../../services/filtro.service';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class Header {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    public filtroService: FiltroService  //aca se inyecta el servicio
+    public filtroService: FiltroService,  //aca se inyecta el servicio
+    public carritoService: CarritoService
   ) {
     this.isDarkMode = this.document.body.classList.contains('dark-mode');
   }

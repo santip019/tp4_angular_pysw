@@ -35,8 +35,20 @@
 
                 </ul>
 
-                <!-- Botón para alternar el modo oscuro -->
-                <div class="d-flex align-items-center">
+                <!-- Botones de acción del navbar -->
+                <div class="d-flex align-items-center gap-2">
+                    <!-- Botón del carrito -->
+                    <button class="btn btn-outline-secondary border-0 p-2 d-flex align-items-center justify-content-center rounded-circle position-relative"
+                        type="button" aria-label="Ver carrito" data-bs-toggle="modal" data-bs-target="#carrito">
+                        <i class="bi bi-cart3"></i>
+                        <span *ngIf="carritoService.cantidadTotal() > 0"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="font-size: 0.6rem;">
+                            {{ carritoService.cantidadTotal() }}
+                        </span>
+                    </button>
+
+                    <!-- Botón para alternar el modo oscuro -->
                     <button (click)="toggleDarkMode()"
                         class="btn btn-outline-secondary border-0 p-2 d-flex align-items-center justify-content-center rounded-circle dark-mode-btn"
                         type="button" aria-label="Alternar modo oscuro">

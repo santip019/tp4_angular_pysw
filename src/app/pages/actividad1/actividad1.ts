@@ -1,14 +1,15 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FiltroService } from '../../services/filtro.service';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-actividad1',
   imports: [CommonModule],
-  templateUrl: './home.html',
-  styleUrl: './home.css',
+  templateUrl: './actividad1.html',
+  styleUrl: './actividad1.css',
 })
-export class Home {
+export class Actividad1 {
 
   productos = [
     {
@@ -83,7 +84,10 @@ export class Home {
     }
   ];
 
-  constructor(public filtroService: FiltroService) {}
+  constructor(
+    public filtroService: FiltroService,
+    public carritoService: CarritoService
+  ) { }
 
   // Esta lista se actualiza sola cuando cambia la categoría en el servicio
   productosFiltrados = computed(() => {
@@ -91,5 +95,10 @@ export class Home {
     if (!filtro) return this.productos; //si no hay filtro, se muestra toda la lista
     return this.productos.filter(p => p.categoria === filtro); //aca se filtra la lista de productos
   });
+
+  // Agrega un producto al carrito usando el servicio compartido
+  agregarAlCarrito(producto: any) {
+    this.carritoService.agregarProducto(producto);
+  }
 
 }
