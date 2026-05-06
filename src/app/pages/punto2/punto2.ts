@@ -4,12 +4,12 @@ import { FiltroService } from '../../services/filtro.service';
 import { CarritoService } from '../../services/carrito.service';
 
 @Component({
-  selector: 'app-actividad1',
+  selector: 'app-punto2',
   imports: [CommonModule],
-  templateUrl: './actividad1.html',
-  styleUrl: './actividad1.css',
+  templateUrl: './punto2.html',
+  styleUrl: './punto2.css',
 })
-export class Actividad1 {
+export class Punto2 {
 
   productos = [
     {
