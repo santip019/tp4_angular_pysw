@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export interface Imagen {
   nombre: string;
   descripcion: string;
-  img: string; // Cambié 'imagen' por 'img' para que coincida con el estándar que veníamos hablando
+  img: string;
 }
 
 @Injectable({

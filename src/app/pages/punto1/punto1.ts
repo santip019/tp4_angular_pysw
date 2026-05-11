@@ -8,11 +8,10 @@ import { Imagen, ImagenesService } from '../../services/imagenes.service';
 })
 export class Punto1 implements OnInit {
 
-  // Variables locales para almacenar los datos y el estado
   listaEventos: Imagen[] = []; 
   indice: number = 0;          
 
-  // Inyectamos el servicio que creamos anteriormente
+  // Inyectamos el servicio que creamos con el fin de aprender como se utilizan los service locales
   constructor(private _imagenesService: ImagenesService) { }
 
   ngOnInit(): void {
