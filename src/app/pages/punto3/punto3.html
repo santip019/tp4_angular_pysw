@@ -14,6 +14,18 @@
     <!-- Información -->
     <span class="fs-5 ms-3">Intentos restantes: {{ intentosRestantes }}</span>
   </div>
+  
+  @if (banderaganar) {
+    <!-- Muestra un mensaje cuando el jugador GANE -->
+    <div class="alert alert-success mt-4" role="alert">
+      ¡Felicidades! Has ganado el juego.
+    </div>
+  } @else if (banderaIntentos) {
+    <!-- Muestra un mensaje cuando el jugador PIERDA -->
+    <div class="alert alert-danger mt-4" role="alert">
+      Lo siento, has perdido. No te quedan intentos.
+    </div>
+  }
 
   <!-- Tablero del Juego (solo se muestra si el juego inició) -->
   <div class="row justify-content-center" *ngIf="juegoIniciado">
@@ -33,20 +45,17 @@
              <!-- [class.carta-tapada]="!carta.descubierta": Aplica la clase CSS carta-tapada si la propiedad descubierta de la carta actual es false -->
              <!-- @click="seleccionarCarta(carta)": Cuando el usuario hace clic en esta carta, se ejecuta el método seleccionarCarta pasándole como argumento la carta actual -->
           
-          <!-- Si está descubierta, mostramos su valor -->
+          <!-- Si está descubierta, mostramos la imagen -->
           @if (carta.descubierta) {
-            <span class="valor-carta">{{ carta.valor }}</span>
+            <img [src]="carta.imagen" alt="Carta" class="carta-imagen">
+
           } @else {
             <!-- Si está tapada, mostramos la imagen neutral -->
-            <span class="neutral">?</span>
+            <span class="neutral" aria-hidden="true">?</span>
           }
           
         </div>
       </div>
     }
   </div>
-  <!-- POR HACER -->
-  <!-- Mostrar un mensaje cuando el jugador GANE -->
-  <!-- Mostrar un mensaje cuando el jugador PIERDA -->
-
 </div>
