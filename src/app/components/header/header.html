@@ -19,8 +19,8 @@
             <div class="collapse navbar-collapse" id="navbarPrincipal">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item dropdown" *ngIf="router.url !== '/parte2'">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    <li class="nav-item dropdown" *ngIf="router.url == '/punto2'">
+                        <a class="nav-link dropdown-toggle" style="cursor: pointer;" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">Categorias</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" (click)="filtroService.setCategoria('Celulares')">Celulares</a></li>
@@ -33,6 +33,12 @@
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" routerLink="/punto1">Punto 1</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" routerLink="/punto2">Punto 2</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" routerLink="/punto3">Punto 3</a>
                     </li>
                     <li class="nav-item">
@@ -43,7 +49,7 @@
                 <!-- Botones de acción del navbar -->
                 <div class="d-flex align-items-center gap-2">
                     <!-- Botón del carrito -->
-                    <button class="btn btn-outline-secondary border-0 p-2 d-flex align-items-center justify-content-center rounded-circle position-relative"
+                    <button class="btn btn-outline-secondary border-0 p-2 d-flex align-items-center justify-content-center rounded-circle position-relative" *ngIf="router.url == '/punto2'"
                         type="button" aria-label="Ver carrito" data-bs-toggle="modal" data-bs-target="#carrito">
                         <i class="bi bi-cart3"></i>
                         <span *ngIf="carritoService.cantidadTotal() > 0"

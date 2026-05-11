@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      
+      <div class="card shadow position-relative overflow-hidden">
+        
+        <img [src]="listaEventos[indice].img" 
+             class="card-img-top w-100" 
+             style="height: 400px; object-fit: cover;"
+             alt="Imagen del evento">
+
+        <div class="card-img-overlay d-flex flex-column justify-content-end text-white bg-dark bg-opacity-25">
+          <h2 class="fw-bold">{{ listaEventos[indice].nombre }}</h2>
+          <p>{{ listaEventos[indice].descripcion }}</p>
+        </div>
+
+        <button (click)="anterior()" class="carousel-control-prev border-0 bg-transparent">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+
+        <button (click)="siguiente()" class="carousel-control-next border-0 bg-transparent">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
