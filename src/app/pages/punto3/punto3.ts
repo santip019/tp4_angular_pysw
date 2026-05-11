@@ -35,6 +35,7 @@ export class Punto3 {
   intentosRestantes: number = 0; 
   juegoIniciado: boolean = false;
   cartasSeleccionadas: Carta[] = [];
+  contadorGanar: number = 0;
   
   // Variable para cumplir con el botón "INTENTAR" que habilita a voltear
   puedeVoltear: boolean = false; 
@@ -45,6 +46,7 @@ export class Punto3 {
     this.intentosRestantes = 10; // Iniciamos con 10 intentos
     this.puedeVoltear = false;
     this.cartasSeleccionadas = [];
+    this.contadorGanar = 0;
     this.mezclarCartas();
   }
 
@@ -82,9 +84,29 @@ export class Punto3 {
 
     // Cuando ya se seleccionaron 2 cartas, toca evaluarlas
     if (this.cartasSeleccionadas.length === 2) {
-      this.puedeVoltear = false; // Bloqueamos hasta que presione INTENTAR de nuevo
+      this.intentosRestantes--;
+        if (this.intentosRestantes > 0) {
+          this.puedeVoltear = false; // Bloqueamos hasta que presione INTENTAR de nuevo
+          if (this.cartasSeleccionadas[0].valor === this.cartasSeleccionadas[1].valor) {
+            // Si coinciden, las dejamos descubiertas y limpiamos la selección
+            this.cartasSeleccionadas = [];
+            this.contadorGanar++;
+          } else {
+            // Si no coinciden, las volteamos de nuevo después de un breve retraso
+            setTimeout(() => {
+              this.cartasSeleccionadas.forEach(carta => carta.descubierta = false);
+              this.cartasSeleccionadas = [];
+            }, 1000); // 1 segundo para que el jugador vea las cartas
+          }
+        } else {
+          alert("¡Juego terminado! No te quedan intentos.");
+        }
       // POR HACER:
       // Validar cartas, tener en cuenta intentos y definir derrota
+    }
+
+    if (this.contadorGanar === 6) {
+      alert("¡Felicidades! Has ganado el juego.");
     }
   }
 }
