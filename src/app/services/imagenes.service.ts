@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 
-// 1. Definimos la interfaz (Asegúrate de que el nombre de la propiedad sea el que usarás en el HTML)
+// 1. Definimos la interfaz
 export interface Imagen {
   nombre: string;
   descripcion: string;
   img: string;
 }
-
+// Injectable decorador
 @Injectable({
   providedIn: 'root'
 })
+
 export class ImagenesService {
 
   // 2. Datos locales
-  private imagenes: Imagen[] = [
+  private imagenes: Imagen[] = [ //imagenges es un arreglo de tipo Imagen
     {
       nombre: 'Taller de Yoga',
       descripcion: 'Una sesión para conectar cuerpo y mente.',

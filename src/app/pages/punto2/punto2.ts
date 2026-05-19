@@ -9,6 +9,7 @@ import { CarritoService } from '../../services/carrito.service';
   templateUrl: './punto2.html',
   styleUrl: './punto2.css',
 })
+
 export class Punto2 {
 
   productos = [
@@ -84,6 +85,7 @@ export class Punto2 {
     }
   ];
 
+  //Se carga el servicio de filtro y carrito
   constructor(
     public filtroService: FiltroService,
     public carritoService: CarritoService
@@ -93,7 +95,7 @@ export class Punto2 {
   productosFiltrados = computed(() => {
     const filtro = this.filtroService.categoriaSeleccionada(); //aca se obtiene el valor de la variable, y como es un signal, cualquier componente que esté suscrito a esta variable se actualizará automáticamente
     if (!filtro) return this.productos; //si no hay filtro, se muestra toda la lista
-    return this.productos.filter(p => p.categoria === filtro); //aca se filtra la lista de productos
+    return this.productos.filter(p => p.categoria === filtro); //devuelve solo los productos que coincidan con el filtro seleccionado. p => p.categoria: agarra todos los productos(p) y compara que sea igual al filtro
   });
 
   // Agrega un producto al carrito usando el servicio compartido
