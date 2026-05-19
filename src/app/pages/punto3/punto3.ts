@@ -104,6 +104,9 @@ export class Punto3 {
             }, 1000); // 1 segundo para que el jugador vea las cartas
           }
           this.intentosRestantes--;
+        
+      // POR HACER:
+      // Validar cartas, tener en cuenta intentos y definir derrota
     }
 
     if (this.contadorGanar === 6) {
