@@ -46,19 +46,23 @@
                     </div>
 
                     <!-- Lista de productos en el carrito -->
-                    <div *ngFor="let item of carritoService.arrayCarrito()"
+                    <div *ngFor="let producto of carritoService.arrayCarrito()"
                         class="carrito-item d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
-                        <img [src]="item.img" [alt]="item.nombre" class="rounded"
+                        <img [src]="producto.img" [alt]="producto.nombre" class="rounded"
                             style="width: 60px; height: 60px; object-fit: contain;">
                         <div class="flex-grow-1">
-                            <p class="mb-0 fw-semibold small card-title text-primary">{{ item.nombre }}</p>
-                            <p class="mb-0 text-muted small carrito-text">Cant: {{ item.cantidad }} ×</p>
+                            <p class="mb-0 fw-semibold small card-title text-primary">{{ producto.nombre }}</p>
+                            <p class="mb-0 text-muted small carrito-text">Cant: {{ producto.cantidad }} ×</p>
                         </div>
                         <div class="text-end">
-                            <p class="mb-1 fw-bold small">{{ item.precio * item.cantidad | currency:'ARS ' }}</p>
+                            <p class="mb-1 fw-bold small">{{ producto.precio * producto.cantidad | currency:'ARS ' }}</p>
                             <button class="btn btn-sm btn-outline-danger p-0 px-1"
-                                (click)="carritoService.eliminarProducto(item.nombre)">
+                                (click)="carritoService.eliminarProducto(producto)">
                                 <i class="bi bi-trash"></i>
+                            </button>
+                             <button class="btn btn-sm btn-outline-danger p-0 px-1"
+                                (click)="carritoService.eliminarProductoTodo(producto)">
+                                <i class="bi bi-x-lg"></i>
                             </button>
                         </div>
                     </div>
@@ -69,7 +73,7 @@
                 <div *ngIf="carritoService.arrayCarrito().length > 0" class="modal-footer-carrito p-3 border-top">
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <span class="fw-bold">Total:</span>
-                        <span class="fw-bold fs-5">{{ carritoService.total() | currency:'ARS ' }}</span>
+                        <span class="fw-bold fs-5">{{ carritoService.total() | currency:'ARS ' }}</span> <!--Se usa el | para aplicar un pipe y currency es un pipe que formatea el numero como moneda-->
                     </div>
                 </div>
 
