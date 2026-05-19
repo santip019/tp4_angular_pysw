@@ -92,14 +92,14 @@ export class Parte2 implements OnInit {
 
   // Obtiene el resumen de inscripciones por categoría
   getResumenPorCategoria() {
-    const resumen: { [key: string]: number } = { //un objeto que tiene como clave un string y como valor un numero, en este caso string es la categoria y el numero es la cantidad de alumnos en esa categoria
+    const resumen: { [key: string]: number } = {
       "Estudiante": 0,
       "Egresado": 0,
       "Particular": 0
     };
 
     this.gestionService.getAlumnos().forEach(a => { // Recorre el array de alumnos
-      if (resumen[a.categoriaAlumno] !== undefined) { //si la categoria del alumno existe en el objeto resumen 
+      if (resumen[a.categoriaAlumno] !== undefined) {
         resumen[a.categoriaAlumno]++;//aumenta la cantidad segun la categoria, osea es un contador
       }
     });

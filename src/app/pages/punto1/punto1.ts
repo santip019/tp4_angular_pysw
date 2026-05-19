@@ -8,11 +8,11 @@ import { Imagen, ImagenesService } from '../../services/imagenes.service';
 })
 export class Punto1 implements OnInit {
 
-  listaEventos: Imagen[] = []; //lista eventos es un arreglo de tipo Imagen que esta inicializado en vacio 
+  listaEventos: Imagen[] = []; 
   indice: number = 0;          
 
-  // Inyectamos el servicio que creamos
-  constructor(private _imagenesService: ImagenesService) { } //constructor lo que hace es iniciar el componente y usar los servicios
+  // Inyectamos el servicio que creamos con el fin de aprender como se utilizan los service locales
+  constructor(private _imagenesService: ImagenesService) { }
 
   ngOnInit(): void {
     // Al cargar el componente, traemos la lista de imágenes del servicio
@@ -22,7 +22,7 @@ export class Punto1 implements OnInit {
   // Método para avanzar a la siguiente imagen
   siguiente(): void {
     // Usamos el operador módulo para que al llegar al final vuelva a 0 automáticamente
-    this.indice = (this.indice + 1) % this.listaEventos.length; //El porcentaje se usa para que al llegar al final vuelva a 0 automáticamente
+    this.indice = (this.indice + 1) % this.listaEventos.length;
   }
 
   // Método para retroceder a la imagen anterior
